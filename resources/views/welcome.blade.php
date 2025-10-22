@@ -45,21 +45,21 @@
                                         Log in
                                     </a>
 
-                                    @if (Route::has('register'))
+                                    {{-- @if (Route::has('register'))
                                         <a
                                             href="{{ route('register') }}"
                                             class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                                         >
                                             Register
                                         </a>
-                                    @endif
+                                    @endif --}}
                                 @endauth
                             </nav>
                         @endif
                     </header>
 
                     <main class="mt-6">
-                        <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
+                        {{-- <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
                             <a
                                 href="https://laravel.com/docs"
                                 id="docs-card"
@@ -163,7 +163,12 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
+                        <div class="text-center">
+                            <h2 class="text-2xl font-semibold text-black dark:text-white">Welcome to Laravel</h2>
+                            <p class="mt-4 text-sm/relaxed text-black dark:text-white/70">
+                                You have successfully set up a new Laravel application.
+                            </p>
                     </main>
 
                     <footer class="py-16 text-center text-sm text-black dark:text-white/70">
