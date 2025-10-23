@@ -7,8 +7,9 @@
                     Create New Article
                 </h1>
 
-                <form method="POST" action="" enctype="multipart/form-data">
+                <form method="POST" action="{{route('articles.update',$article->id)}}" enctype="multipart/form-data">
                     @csrf
+                    @method('patch')
 
                     <!-- Title -->
                     <div>

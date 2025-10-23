@@ -80,9 +80,25 @@ class ArticlesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Article $article,Request $request)
     {
         //
+        $data=$request->validate([
+            'title'=>'required',
+            'full_text'=>'required',
+            'categories_id'=>'required'
+        ]);
+
+        if($request->hasFile('image'))
+        {
+           $path=$request->file('image')->store('images','public');
+           $data['image']=$path;
+        }
+
+        $data['user_id']=Auth::user()->id;
+        // $article=Article::where('id',$id)->first();
+        $article->update($data);
+        return redirect()->route('dashboard')->with('success','Article updated Successfully!');
     }
 
     /**
@@ -91,5 +107,6 @@ class ArticlesController extends Controller
     public function destroy(string $id)
     {
         //
+        dd($id);
     }
 }
