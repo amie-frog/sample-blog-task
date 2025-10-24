@@ -1,16 +1,21 @@
 <?php
 
-use App\Http\Controllers\ArticlesController;
 use App\Models\Article;
+
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ArticlesController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/dashboard', function () {
-    $articles=Article::with('category')->latest()->paginate(10);
+    $articles=Article::with('category')
+                        ->filter(request('search'))
+                        ->latest()
+                        ->paginate(10);
     return view('dashboard',compact('articles'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 

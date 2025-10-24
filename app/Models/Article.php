@@ -18,4 +18,14 @@ class Article extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+
+    public function scopeFilter($q,$v)
+    {
+        if($v)
+        {
+            return $q->where('title','like' ,'%' . $v . '%')
+                    ->orWhere('full_text','like','%'.$v.'%');
+        }
+        return $q;
+    }
 }

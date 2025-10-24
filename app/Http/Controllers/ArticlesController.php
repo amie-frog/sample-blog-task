@@ -107,6 +107,8 @@ class ArticlesController extends Controller
     public function destroy(string $id)
     {
         //
-        dd($id);
+       Article::where('id',$id)->delete();
+
+       return redirect()->route('dashboard')->with('success','Article Deleted Successfully!');
     }
 }
