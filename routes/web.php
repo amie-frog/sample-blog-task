@@ -6,6 +6,7 @@ use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\CategoriesController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,6 +28,7 @@ Route::middleware('auth')->group(function () {
     // Route::get('article/{id}',[ArticlesController::class,'show'])->name('articles.show');
     // Route::get('article/create',[ArticlesController::class,'create'])->name('articles.create');
     Route::resource('articles', ArticlesController::class);
+    Route::resource('categories',CategoriesController::class);
 });
 
 require __DIR__.'/auth.php';
